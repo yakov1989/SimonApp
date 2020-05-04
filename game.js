@@ -15,7 +15,7 @@ $(".btn").click(function () {
   }
 });
 
-$(document).keypress(function () {
+$(".start").click(function () {
   if (!started) {
     $("h1").text("Level 0");
     nextSequence();
@@ -50,10 +50,11 @@ checkUser = (currentLevel) => {
     var wrong = new Audio("sounds/wrong.mp3");
     wrong.play();
     $("body").addClass("game-over");
+    $("h1").text("Game Over, Press Start");
     setTimeout(() => {
       $("body").removeClass("game-over");
     }, 200);
-    $("h1").text("Game Over, Press Any Key to Restart");
+
     gameRestart();
   }
 };
