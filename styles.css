@@ -1,6 +1,11 @@
+html {
+    height: 100%;
+}
+
 body {
     text-align: center;
-    background-color: #011F3F;
+    background-image: url(http://braccousa.com/wp-content/uploads/2013/07/Dark-wooden-website-background.jpg);
+    background-size: cover;
 }
 
 #level-title {
@@ -8,7 +13,7 @@ body {
     font-size: 3rem;
     margin: 3%;
     margin-bottom: 5%;
-    color: #FEF2BF;
+    color: rgb(211, 254, 191);
 }
 
 .container {
@@ -39,6 +44,9 @@ body {
     }
     #level-title {
         font-size: 2rem;
+    }
+    body {
+        height: 100%;
     }
 }
 
@@ -76,6 +84,8 @@ body {
     box-shadow: aqua;
     border-radius: 40%;
     cursor: pointer;
+    font-weight: bold;
+    margin: 10px;
 }
 
 footer {
