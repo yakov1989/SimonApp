@@ -91,3 +91,17 @@ body {
 footer {
     margin: 30px;
 }
+
+.madeBy {
+    font-weight: bold;
+    float: left;
+    color: rgb(211, 254, 191);
+    margin-top: 30px;
+}
+
+p {
+    font-weight: bold;
+    color: white;
+    font-size: 1rem;
+    font-family: 'Times New Roman', Times, serif;
+}

@@ -6,7 +6,7 @@ var level = 0;
 var pressed = false;
 
 $(".btn").click(function () {
-  if (pressed) {
+  if (pressed && gamePattern.length > 0) {
     var userChosenColor = this.id;
     userClickedPattern.push(userChosenColor);
     playAudio(userChosenColor);
@@ -18,6 +18,9 @@ $(".btn").click(function () {
 $(".start").click(function () {
   if (!started) {
     $("h1").text("Level 0");
+    level = 0;
+    $(this).hide();
+    $("p").text("");
     nextSequence();
     started = true;
     pressed = true;
@@ -40,6 +43,7 @@ animatePress = (currentColor) => {
 
 checkUser = (currentLevel) => {
   if (gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
+    console.log(gamePattern.length, userClickedPattern.length);
     if (gamePattern.length === userClickedPattern.length) {
       setTimeout(() => {
         nextSequence();
@@ -53,8 +57,10 @@ checkUser = (currentLevel) => {
     $("h1").text("Game Over, Press Start");
     setTimeout(() => {
       $("body").removeClass("game-over");
-    }, 200);
 
+      $(".start").show();
+    }, 500);
+    $("p").text("Sry You Reached Level: " + level);
     gameRestart();
   }
 };
@@ -72,13 +78,12 @@ nextSequence = () => {
 
   if (gamePattern.length > 0) {
     for (var i = 0; i < gamePattern.length; i++) {
-      console.log(gamePattern[i]);
       let actual = gamePattern[i];
       setTimeout(function () {
         this.flashButton(actual);
         this.playAudio(actual);
-      }, i * 500);
-      time = i * 500;
+      }, i * 300);
+      time = i * 300;
     }
   }
 
@@ -87,24 +92,8 @@ nextSequence = () => {
   } else {
     setTimeout(function () {
       handleNewSequnce();
-    }, time + 500);
+    }, time + 300);
   }
-
-  // if (gamePattern.length > 0) {
-  //   var interval = setInterval(function () {
-  //     setTimeout(function () {
-  //       this.flashButton(gamePattern[index]);
-  //       this.playAudio(gamePattern[index]);
-  //     }, 500);
-  //     index++;
-  //     if (index >= gamePattern.length) {
-  //       clearInterval(interval);
-  //       this.handleNewSequnce();
-  //     }
-  //   }, 600);
-  // } else {
-  //   handleNewSequnce();
-  // }
 };
 
 handleNewSequnce = () => {
